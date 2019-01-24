@@ -14,13 +14,13 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Register User Command connected to the database!");
   
-  var newUser = "xXxTestUserxXx";		//new Username
-  var newName = "AAAAAAAAA";			//new Name
-  var newPW = "password123";			//new Password
+  var newUser = "xXxTestUserxXx";		         //new Username
+  var newEmail = "AAAAAAAAA@gmail.com";			 //new Email
+  var newPW = "password123";			           //new Password
   
-  var sql = "INSERT INTO user (username, name, password) VALUES (\'"+newUser+"\',\'"+newName+"\',\'"+newPW+"\')";
+  var sql = "INSERT INTO user (username, password, email) VALUES (\'"+newUser+"\',\'"+newPW+"\',\'"+newEmail+"\')";
   
   con.query(sql, function (err, result) {
     if (err) throw err;
