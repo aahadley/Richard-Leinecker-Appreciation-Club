@@ -9,7 +9,7 @@
 -   Mariana Gomez Kusnecov
 -   Jeremy Libby
 -   Ashley Smith
--   *(one missing)*
+-   JP Farriss
 
 # Dates
 
