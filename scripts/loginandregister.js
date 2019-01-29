@@ -22,23 +22,23 @@ function login(){
         
         //if result is empty, the username was not found
         if(result[0] == undefined){
-        console.log("Username not found");
-        return 0;
+	        console.log("Username not found");
+	        return 0;
         }
 
         //invalid login
         if (un != result[0].username && pw != result[0].password){
-        console.log("Invalid username or password.");
-        return 0;
+	        console.log("Invalid username or password.");
+	        return 0;
         }
         else{
-        console.log("Login successful!");
-        //window.localStorage.setItem("currentlyLoggedInAs", result[0].username);
-        //localstorage may or may not work in an actual html environment
-        return 1;
+	        console.log("Login successful!");
+	        //window.localStorage.setItem("currentlyLoggedInAs", result[0].username);
+	        //localstorage may or may not work in an actual html environment
+	        return 1;
         }
 
-    });
+    	});
     });
 }
 
@@ -54,8 +54,8 @@ function register(){
         var sql = "INSERT INTO user (username, password, email) VALUES (\'"+newUser+"\',\'"+newPW+"\',\'"+newEmail+"\')";
         
         con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("1 record inserted, ID: " + result.insertId);
+	        if (err) throw err;
+	        console.log("1 record inserted, ID: " + result.insertId);
         });
     });
 }
