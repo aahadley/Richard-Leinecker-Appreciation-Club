@@ -1,4 +1,18 @@
-//TODO: None of this actually works rn
+/*
+PLEASE READ		PLEASE READ		PLEASE READ		PLEASE READ		PLEASE READ		PLEASE READ		
+
+To properly get the results from getContacts() it MUST be called from an asyncronous function
+The following code is an example function to show you how to do this:
+
+async function testFunction(){
+	var result = await getContacts("username", "contactName", "contactEmail", "contactPhone", "contactAddress");
+	//code to use the results from getContacts must be inside this function
+	//results WILL NOT properly work if returned out of this function
+	//except maybe if it is to another async function that awaited this function
+}
+
+Also, if a field is empty, i assumed the input was an empty string
+*/
 
 var mysql = require('mysql');
 
@@ -9,30 +23,77 @@ var con = mysql.createConnection({
   database: "contactm"
 });
 
-function getContacts(un){
+
+//getContacts() requires a proper username inorder to function
+//function also assumes an empty textfield is treated as an empty string
+function getContactsHelper(un, cName, cEmail, cPhone, cAddress){
+	return new Promise(function(resolve, reject){
+		var sql = "SELECT * FROM contacts WHERE username = \'"+un+"\'";
+		if (cName != "")
+			sql += " AND contactName = \'"+cName+"\'";
+		if (cEmail != "")
+			sql += " AND emailAddress = \'"+cEmail+"\'";
+		if (cPhone != "")
+			sql += " AND phoneNumber = \'"+cPhone+"\'";
+		if (cAddress != "")
+			sql += " AND address = \'"+cAddress+"\'";
+
+		con.query(sql, function(err, result){
+			if (result === undefined)
+				reject(new Error ("Error result is undefined"));
+			else
+				resolve(result);
+		});
+	});
+}
+
+
+//If contact is not found, returns an empty array
+async function getContacts(un, cName, cEmail, cPhone, cAddress){
+	var result = await getContactsHelper(un, cName, cEmail, cPhone, cAddress);
+	//console.log(result);
+	return result;
+}
+
+/*
+//The following test function gets all contacts of demoUser that live in "address 1"
+
+async function testFunction(){
+	var result = await getContacts("demoUser", "", "", "", "address 1");
+	console.log(result);
+}
+testFunction();
+*/
+
+
+
+function addContacts(un, cName, cEmail, cPhone, cAddress){
     con.connect(function(err) {
-    if (err) throw err;
-    console.log("getContacts connected to the database!");
-
-    var sql = "SELECT * FROM contacts WHERE username = \'"+un+"\'";
-
-    con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log(result);
-    	});
+
+        var sql = "INSERT INTO contacts (contactName, emailAddress, phoneNumber, address, username) \
+        VALUES (\'"+cName+"\',\'"+cEmail+"\',\'"+cPhone+"\',\'"+cAddress+"\',\'"+un+"\')";
+        
+        con.query(sql, function (err, result) {
+	        if (err) throw err;
+	        console.log("1 record inserted, ID: " + result.insertId);
+        });
     });
 }
+//addContacts("demoUser","BBB","BBB@hotmail.com","BBB-BBB-BBBB","BBB lane");
 
-function searchContacts(un, cName, cPhone, cEmail, cAddress){
+
+
+function deleteContact(un, cID){
 	con.connect(function(err) {
-    if (err) throw err;
-    console.log("getContacts connected to the database!");
-
-    var sql = "SELECT * FROM contacts WHERE username = \'"+un+"\'";
-
-    con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log(result);
-    	});
+
+        var sql = "DELETE FROM contacts WHERE username = \'"+un+"\' AND contactID = \'"+cID+"\'";
+        
+        con.query(sql, function (err, result) {
+	        if (err) throw err;
+	        console.log("1 record deleted");
+        });
     });
 }
+//deleteContact("demoUser","1006");
