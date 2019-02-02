@@ -23,7 +23,6 @@ var con = mysql.createConnection({
   database: "contactm"
 });
 
-
 //getContacts() requires a proper username inorder to function
 //function also assumes an empty textfield is treated as an empty string
 function getContactsHelper(un, cName, cEmail, cPhone, cAddress){
@@ -47,6 +46,22 @@ function getContactsHelper(un, cName, cEmail, cPhone, cAddress){
 	});
 }
 
+//function to display the information of the contact(s)
+//that are returned from getContacts()
+function displayContact(){
+
+	var un = "";
+	var cName = document.getElementById("contactName").value;
+	var cEmail = document.getElementById("contactEmail").value;
+	var cPhone = document.getElementById("contactPhone").value;
+	var cAddress = document.getElementById("contactAddress").value;
+
+	var cont = getContacts(un,cName,cEmail,cPhone,cAddress);
+	
+	$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[0] +'</th><td>'+cont[1]+'</td><td>'+cont[2]+'</td><td>'+cont[3]+'</td></tr>'));
+		
+}
+
 
 //If contact is not found, returns an empty array
 async function getContacts(un, cName, cEmail, cPhone, cAddress){
@@ -67,7 +82,14 @@ testFunction();
 
 
 
-function addContacts(un, cName, cEmail, cPhone, cAddress){
+function addContacts(){
+
+	var un = "";
+	var cName = document.getElementById("newContactName").value;
+	var cPhone = document.getElementById("newContactPhone").value;
+	var cEmail = document.getElementById("newContactEmail").value;
+	var cAddress = document.getElementById("newContactAddress").value;
+
     con.connect(function(err) {
         if (err) throw err;
 
