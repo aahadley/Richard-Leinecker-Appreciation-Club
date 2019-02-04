@@ -23,6 +23,8 @@ var con = mysql.createConnection({
   database: "contactm"
 });
 
+var un = localStorage.getItem("localLogin");
+
 //getContacts() requires a proper username inorder to function
 //function also assumes an empty textfield is treated as an empty string
 function getContactsHelper(un, cName, cEmail, cPhone, cAddress){
@@ -50,7 +52,8 @@ function getContactsHelper(un, cName, cEmail, cPhone, cAddress){
 //that are returned from getContacts()
 function displayContact(){
 
-	var un = "";
+	$("#contactDisplay").find('tbody').html("");
+
 	var cName = document.getElementById("contactName").value;
 	var cEmail = document.getElementById("contactEmail").value;
 	var cPhone = document.getElementById("contactPhone").value;
@@ -58,7 +61,16 @@ function displayContact(){
 
 	var cont = getContacts(un,cName,cEmail,cPhone,cAddress);
 	
-	$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[0] +'</th><td>'+cont[1]+'</td><td>'+cont[2]+'</td><td>'+cont[3]+'</td></tr>'));
+	$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[0].contactName +'</th><td>'+cont[0].phoneNumber +'</td><td>'+cont[0].emailAddress +'</td><td>'+cont[0].address +'</td></tr>'));
+
+	var i = 1;
+	while(cont.length > i+1){
+		$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[i].contactName +'</th><td>'+cont[i].phoneNumber +'</td><td>'+cont[i].emailAddress +'</td><td>'+cont[i].address +'</td></tr>'));
+		i++;
+	}
+
+	$("#contactName,#contactEmail,#contactPhone,#contactAddress").val("");
+
 		
 }
 
@@ -84,7 +96,6 @@ testFunction();
 
 function addContacts(){
 
-	var un = "";
 	var cName = document.getElementById("newContactName").value;
 	var cPhone = document.getElementById("newContactPhone").value;
 	var cEmail = document.getElementById("newContactEmail").value;
@@ -100,7 +111,8 @@ function addContacts(){
 	        if (err) throw err;
 	        console.log("1 record inserted, ID: " + result.insertId);
         });
-    });
+	});
+	$("#newContactName,#newContactPhone,#newContactEmail,#newContactAddress").val("");
 }
 //addContacts("demoUser","BBB","BBB@hotmail.com","BBB-BBB-BBBB","BBB lane");
 
