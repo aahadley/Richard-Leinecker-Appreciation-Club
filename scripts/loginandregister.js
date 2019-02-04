@@ -34,8 +34,9 @@ function login(){
         else{
 	        console.log("Login successful!");
 	        //window.localStorage.setItem("currentlyLoggedInAs", result[0].username);
-	        //localstorage may or may not work in an actual html environment
-	        return 1;
+            //localstorage may or may not work in an actual html environment
+            localStorage.setItem("localLogin", un);
+	        window.location.assign("contactsPage.html");
         }
 
     	});
