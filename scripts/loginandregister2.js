@@ -12,7 +12,7 @@ function register(){
     var jsonPayload = obj.stringify();
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/user", false);
+	xhr.open("POST","http://localhost:5000/user", true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -40,7 +40,7 @@ function login(){
 
    	//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","localhost:5000/login", false);
+	xhr.open("POST","localhost:5000/login", true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
