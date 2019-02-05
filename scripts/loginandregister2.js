@@ -12,16 +12,19 @@ function register(){
     var jsonPayload = obj.stringify();
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/user", true);
+	xhr.open("POST","http://localhost:5000/user", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
 		xhr.send(jsonPayload)
 		var jsonObject = JSON.parse(xhr.responseText);
 		console.log(jsonObject);
+
+		localStorage.setItem("localLogin", newUser);
+	    window.location.assign("contactsPage.html");
 	}
 	catch(err){
-		console.log(err)
+		console.log(err);
 	}
 }
 

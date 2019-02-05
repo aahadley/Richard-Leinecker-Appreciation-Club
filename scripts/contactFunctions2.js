@@ -39,7 +39,7 @@ function getContacts(un, cName, cEmail, cPhone, cAddress){
 	var  jsonPayload = obj.stringify();
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/get", true);
+	xhr.open("POST","http://localhost:5000/get", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -48,7 +48,7 @@ function getContacts(un, cName, cEmail, cPhone, cAddress){
 		console.log(jsonObject);
 	}
 	catch(err){
-		//TODO
+		console.log(err);
 	}
 }
 
@@ -71,7 +71,7 @@ function addContacts(){
 	var  jsonPayload = obj.stringify();
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/contactsadd", true);
+	xhr.open("POST","http://localhost:5000/contactsadd", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -80,7 +80,7 @@ function addContacts(){
 		console.log(jsonObject);
 	}
 	catch(err){
-		//TODO
+		console.log(err);
 	}
 
 	$("#newContactName,#newContactPhone,#newContactEmail,#newContactAddress").val("");
@@ -96,7 +96,7 @@ function deleteContact(un, cID){
 	var  jsonPayload = obj.stringify();
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/contactsdel", true);
+	xhr.open("POST","http://localhost:5000/contactsdel", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -105,6 +105,6 @@ function deleteContact(un, cID){
 		console.log(jsonObject);
 	}
 	catch(err){
-		//TODO
+		console.log(err);
 	}
 }
