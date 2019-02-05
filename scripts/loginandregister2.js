@@ -9,14 +9,15 @@ function register(){
     	email: newEmail
     };
 
-    var jsonPayload = obj.stringify();
+    var jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/user", true);
+	xhr.open("POST","http://localhost:5000/register", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
 		xhr.send(jsonPayload)
+		console.log("responseText: "+xhr.responseText);
 		var jsonObject = JSON.parse(xhr.responseText);
 		console.log(jsonObject);
 

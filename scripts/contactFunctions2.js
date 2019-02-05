@@ -36,7 +36,7 @@ function getContacts(un, cName, cEmail, cPhone, cAddress){
    		address: cAddress,
    		username: un
 	};
-	var  jsonPayload = obj.stringify();
+	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
 	xhr.open("POST","http://localhost:5000/get", true);
@@ -68,7 +68,7 @@ function addContacts(){
    		address: cAddress,
    		username: un
 	};
-	var  jsonPayload = obj.stringify();
+	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
 	xhr.open("POST","http://localhost:5000/contactsadd", true);
@@ -93,7 +93,7 @@ function deleteContact(un, cID){
    		username: un,
    		clientID: cID
 	};
-	var  jsonPayload = obj.stringify();
+	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
 	xhr.open("POST","http://localhost:5000/contactsdel", true);

@@ -14,12 +14,12 @@ print ("Database version : %s " % data)
 # ============= USERS =============
 
 # register user
-@app.route('/user', methods=["POST"])
+@app.route('/register', methods=["POST"])
 def add_user():
 
-    username = request.get_json(force = True)["username"]
-    password = request.get_json(force = True)["password"]
-    email    = request.get_json(force = True)["email"   ]
+    username = request.json["username"]
+    password = request.json["password"]
+    email    = request.json["email"   ]
 
     query = "INSERT INTO contactm.user (username, password, email) VALUES (\'"+username+"\',\'"+password+"\',\'"+email+"\')"
     
@@ -34,8 +34,8 @@ def add_user():
 @app.route("/login", methods=["POST"])
 def login():
 
-    username = request.get_json(force = True)["username"]
-    password = request.get_json(force = True)["password"]
+    username = request.json["username"]
+    password = request.json["password"]
 
     query = "SELECT * FROM contactm.user WHERE username = \'"+username+"\'"
 
