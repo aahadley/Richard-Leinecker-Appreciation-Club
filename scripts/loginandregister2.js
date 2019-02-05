@@ -22,7 +22,7 @@ function register(){
 		console.log(jsonObject);
 
 		localStorage.setItem("localLogin", newUser);
-	    window.location.assign("contactsPage.html");
+	    window.open("./contactsPage.html");
 	}
 	catch(err){
 		console.log(err);
@@ -41,16 +41,17 @@ function login(){
 
    	//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","localhost:5000/login", true);
+	xhr.open("POST","http://localhost:5000/login", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
 		xhr.send(jsonPayload)
+		console.log("responseText: "+xhr.responseText);
 		var jsonObject = JSON.parse(xhr.responseText);
 		console.log(jsonObject);
 
 		localStorage.setItem("localLogin", un);
-	    window.location.assign("contactsPage.html");
+	    window.open("./contactsPage.html");
 	}
 	catch(err){
 		console.log(err);

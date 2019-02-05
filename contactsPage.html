@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="contactTheme.css">
 </head>
 
-<body>
+<body onload="displayContact()">
   <div class="py-5 text-center text-white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, .75), rgba(0, 0, 0, .75)), url(https://static.pingendo.com/cover-bubble-dark.svg);  background-position: center center, center center;  background-size: cover, cover;  background-repeat: repeat, repeat;" >
     <div class="container">
       <div class="row">
@@ -33,7 +33,7 @@
               </form>
               <form class="">
                 <div class="form-group"> <input type="email" class="form-control" placeholder="Email" id="newContactEmail"> </div>
-                <div class="form-group"> <input type="text" class="form-control" placeholder="Address" id="newContactAddress"> </div> <button type="button" class="btn btn-primary" onclick="addContacts()">Add</button>
+                <div class="form-group"> <input type="text" class="form-control" placeholder="Address" id="newContactAddress"> </div> <button type="button" class="btn btn-primary" onclick="addContacts(); displayContact()">Add</button>
               </form>
             </div>
           </div>

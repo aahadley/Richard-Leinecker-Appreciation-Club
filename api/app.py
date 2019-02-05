@@ -25,7 +25,7 @@ def add_user():
     
     cursor.execute(query)
     db.commit()
-    db.close()
+    #db.close()
 
     return jsonify({"success": True})
 
@@ -59,7 +59,7 @@ def add_contact():
             
     cursor.execute(query)
     db.commit()
-    db.close()        
+    #db.close()        
 
     return jsonify({"success": True}, {"easteregg" : "<3 Leinecker <3"})
 
@@ -99,7 +99,7 @@ def get_contacts():
 
     
     cursor.execute(query)
-    db.close()
+    #db.close()
 
     return jsonify(cursor.fetchall())
 
@@ -115,10 +115,10 @@ def delete_contact():
     
     cursor.execute(query)
     db.commit()
-    db.close()
+    #db.close()
 
     return jsonify({"success" : True})
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = False)
