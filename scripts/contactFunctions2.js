@@ -19,7 +19,9 @@ function displayContact(){
 
 	var i = 0;
 	while(cont.length >= i+1){
-		$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[i][1] +'</th><td>'+cont[i][2] +'</td><td>'+cont[i][3] +'</td><td>'+cont[i][4] +'</td></tr>'));
+		//$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[i][1] +'</th><td>'+cont[i][2] +'</td><td>'+cont[i][3] +'</td><td>'+cont[i][4] +'</td></tr>'));
+		$("#contactDisplay").find('tbody').append($('<tr><th>'+ cont[i][1] +'</th><td>'+cont[i][2] +'</td><td>'+cont[i][3] +'</td><td>'+cont[i][4] +'</td><td><button id=del'+cont[i][0]+' onclick="deleteContact(); displayContact()"></button></td></tr>'));
+
 		i++;
 	}
 
@@ -94,10 +96,11 @@ function addContacts(){
 
 
 
-function deleteContact(un, cID){
+function deleteContact(){
+	console.log("cID: "+deleteContact.caller.arguments[0].target.id.substring(3));
 	var obj = {
    		username: un,
-   		clientID: cID
+   		contactID: deleteContact.caller.arguments[0].target.id.substring(3)
 	};
 	var  jsonPayload = JSON.stringify(obj);
 
