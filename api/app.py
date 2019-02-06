@@ -3,7 +3,7 @@ import pymysql as sql
 #from flask_restful import Api, Resource, reqparse
 
 app = Flask(__name__)
-db = sql.connect( "contactm.cm0a6cdoupkr.us-east-1.rds.amazonaws.com" , "masterUsername", "highlySecurePassword")
+db = sql.connect("contactm.cm0a6cdoupkr.us-east-1.rds.amazonaws.com" , "masterUsername", "highlySecurePassword")
 cursor = db.cursor()
 cursor.execute("SELECT VERSION()")
 data = cursor.fetchone()
