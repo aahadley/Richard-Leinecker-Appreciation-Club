@@ -83,19 +83,6 @@ def get_contacts():
     
     # Optional parameters
     if name and name != "":
-        query += " AND contactName = \'"+name+"\'"
-        #print("\n\n" + query + "\n\n")
-    
-    if email and email != "":
-        query += " AND emailAddress = \'"+email+"\'"
-
-
-    if phone and phone != "":
-        query += " AND phoneNumber = \'"+phone+"\'"
-
-
-    if address and address != "":
-        query += " AND address = \'"+address+"\'"if name and name != "":
         wildName = "%"+name+"%"
         query += " AND contactName LIKE \'"+wildName+"\'"
         #print("\n\n" + query + "\n\n")
