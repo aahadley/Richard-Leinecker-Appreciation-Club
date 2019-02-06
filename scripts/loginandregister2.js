@@ -43,6 +43,7 @@ function login(){
     var xhr = new XMLHttpRequest();
 	xhr.open("POST","http://iburch.pythonanywhere.com/login", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	xhr.setRequestHeader('Access-Control-Allow-Origin','*');
 
 	try{
 		xhr.send(jsonPayload)
