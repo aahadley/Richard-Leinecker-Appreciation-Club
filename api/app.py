@@ -95,7 +95,24 @@ def get_contacts():
 
 
     if address and address != "":
-        query += " AND address = \'"+address+"\'"
+        query += " AND address = \'"+address+"\'"if name and name != "":
+        wildName = "%"+name+"%"
+        query += " AND contactName LIKE \'"+wildName+"\'"
+        #print("\n\n" + query + "\n\n")
+
+    if email and email != "":
+        wildEmail = "%"+email+"%"
+        query += " AND emailAddress LIKE \'"+wildEmail+"\'"
+
+
+    if phone and phone != "":
+        wildPhone = "%"+phone+"%"
+        query += " AND phoneNumber LIKE \'"+wildPhone+"\'"
+
+
+    if address and address != "":
+        wildAddress = "%"+address+"%"
+        query += " AND address LIKE \'"+wildAddress+"\'"
 
     
     cursor.execute(query)
