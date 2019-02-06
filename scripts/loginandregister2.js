@@ -41,7 +41,7 @@ function login(){
 
    	//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","https://cors.io/?iburch.pythonanywhere.com/login", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/login", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
