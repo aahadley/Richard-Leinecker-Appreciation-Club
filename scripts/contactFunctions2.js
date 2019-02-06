@@ -45,7 +45,7 @@ function getContacts(un, cName, cEmail, cPhone, cAddress){
 	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/contactsget", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/contactsget", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -78,7 +78,7 @@ function addContacts(){
 	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/contactsadd", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/contactsadd", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -105,7 +105,7 @@ function deleteContact(){
 	var  jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/contactsdel", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/contactsdel", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{

@@ -12,7 +12,7 @@ function register(){
     var jsonPayload = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/register", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/register", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
@@ -41,7 +41,7 @@ function login(){
 
    	//var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var xhr = new XMLHttpRequest();
-	xhr.open("POST","http://localhost:5000/login", false);
+	xhr.open("POST","http://iburch.pythonanywhere.com/login", false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
 	try{
