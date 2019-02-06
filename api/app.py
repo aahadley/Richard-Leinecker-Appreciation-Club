@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import pymysql as sql
+import flask_cors
 #from flask_restful import Api, Resource, reqparse
 
 app = Flask(__name__)
@@ -15,6 +16,7 @@ print ("Database version : %s " % data)
 
 # register user
 @app.route('/register', methods=["POST"])
+@flask_cors.cross_origin()
 def add_user():
 
     username = request.json["username"]
@@ -32,6 +34,7 @@ def add_user():
 
 # login
 @app.route("/login", methods=["POST"])
+@flask_cors.cross_origin()
 def login():
 
     username = request.json["username"]
@@ -46,6 +49,7 @@ def login():
 
 # add contact
 @app.route("/contactsadd", methods=["POST"])
+@flask_cors.cross_origin()
 def add_contact():
 
     name     = request.json["contactName" ]
@@ -67,6 +71,7 @@ def add_contact():
 
 # get contacts
 @app.route("/contactsget", methods=["POST"])
+@flask_cors.cross_origin()
 def get_contacts():
     
     name     = request.json["contactName" ]
@@ -110,6 +115,7 @@ def get_contacts():
 
 # delete contact
 @app.route("/contactsdel", methods=["POST"])
+@flask_cors.cross_origin()
 def delete_contact():
 
     username = request.json["username"]
